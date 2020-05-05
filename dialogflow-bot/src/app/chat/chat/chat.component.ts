@@ -12,6 +12,16 @@ export class ChatComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.messages.push(
+      {
+        type : 'text',
+        message: "Test Message Text",
+        reply: "Reply message text",
+        sender: "John Doe",
+        date: new Date(),
+        quote: "TEst quote of chat message", 
+      }
+    );
   }
 
 
