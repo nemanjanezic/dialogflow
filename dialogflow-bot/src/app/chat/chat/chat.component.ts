@@ -7,42 +7,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChatComponent implements OnInit {
 
-  messages:any[];
+  messages:any[] = [];
 
   constructor() { }
 
   ngOnInit(): void {
-    this.messages = [
-       {
-      type : 'text',
-      message: "Test Message Text",
-      reply: "Reply message text",
-      sender: "John Doe",
-      date: new Date(),
-      quote: "TEst quote of chat message", 
-    }, 
-    {
-      type : 'text',
-      message: "Test Message Text",
-      reply: "Reply message text",
-      sender: "John Doe",
-      date: new Date(),
-      quote: "TEst quote of chat message", 
-    },
-    {
-      type : 'text',
-      message: "Test Message Text",
-      reply: "Reply message text",
-      sender: "John Doe",
-      date: new Date(),
-      quote: "TEst quote of chat message", 
-    },
-    ];
   }
+
 
   
   sendMessage(event:any) {
     console.log("IT WORKS");
+    this.messages.push(
+    {
+     type : 'text',
+     message: "Test Message Text",
+     reply: "Reply message text",
+     sender: "John Doe",
+     date: new Date(),
+     quote: "TEst quote of chat message", 
+   });
+
+
   }
 
 }

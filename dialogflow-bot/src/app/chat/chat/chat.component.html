@@ -1,7 +1,7 @@
 <nb-layout>
     <nb-layout-column>
 
-<nb-chat title="Nebular Conversational UI">
+<nb-chat title="DialogFlow Food Ordering ChatBot">
     <nb-chat-message *ngFor="let msg of messages"
                      [type]="msg.type"
                      [message]="msg.text"
@@ -9,6 +9,7 @@
                      [sender]="msg.username"
                      [date]="msg.date"
                      [quote]="msg.quote"
+                     [avatar]="msg.avatar"
                     >
 </nb-chat-message>
 
