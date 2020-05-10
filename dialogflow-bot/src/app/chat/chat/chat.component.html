@@ -4,9 +4,9 @@
 <nb-chat title="DialogFlow Food Ordering ChatBot">
     <nb-chat-message *ngFor="let msg of messages"
                      [type]="msg.type"
-                     [message]="msg.text"
+                     [message]="msg.message"
                      [reply]="msg.reply"
-                     [sender]="msg.username"
+                     [sender]="msg.sender"
                      [date]="msg.date"
                      [quote]="msg.quote"
                      [avatar]="msg.avatar"

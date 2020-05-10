@@ -37,7 +37,7 @@ export class ChatComponent implements OnInit {
      date: new Date(),
      quote: "TEst quote of chat message", 
    });
-
+   console.log("Messages :" + this.messages[0].reply)
 
   }
 
