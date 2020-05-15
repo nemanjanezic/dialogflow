@@ -25,7 +25,9 @@
     "@nebular/eva-icons": "5.0.0",
     "@nebular/theme": "^5.0.0",
     "eva-icons": "^1.1.2",
+    "google-oauth-jwt": "^0.2.0",
     "rxjs": "^6.5.5",
+    "sonicx": "^1.0.0-beta.1",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
   },

@@ -22,38 +22,42 @@ df_request = {
 export class DialogflowService {
 
   accessToken: any;
+  project_id = "food-delivery-adcjmq";
+  sessionId = "23";
 
   constructor(private http: HttpClient) {
     this.getToken();
-   }
+  }
 
-   public getToken() {
-    this.http.get('http://localhost:4000/token').subscribe((response:any) => {
+  public getToken() {
+    this.http.get('http://localhost:4000/token').subscribe((response: any) => {
       this.accessToken = response.token;
+      console.log("Token recieved -> " + this.accessToken);
     })
-   }
+  }
 
   public df_client_call(request) {
 
     const httpOptions = {
       headers: new HttpHeaders({
-        'Authorization': 'Bearer ' + this.accessToken, 
+        'Authorization': 'Bearer ' + this.accessToken,
         'Content-Type': 'application/json; charset=utf-8'
       })
     };
-  
+
 
 
     return this.http.post(
-      'https://dialogflow.googleapis.com/v2/projects/' + environment.projectId +
-      '/agent/sessions/' + environment.sessionId + ':detectIntent',
+      'https://dialogflow.googleapis.com/v2/projects/' + this.project_id +
+      '/agent/sessions/' + this.sessionId + ':detectIntent',
       request,
       httpOptions
     ).pipe(
-      map(( data:any) => {
+      map((data: any) => {
         return data;
-      }), catchError( error => {
+      }), catchError(error => {
         return throwError('Someting went wrong');
       })
-    )}
+    )
+  }
 }

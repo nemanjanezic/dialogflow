@@ -5,11 +5,11 @@ const googleAuth = require('google-oauth-jwt');
 
 // Below are test configuration files (i.e, private key, client email etc) that were used in testing Dialogflow v2 API 
 // NOTE: since oAuth requires HTTPS protocol to accept the requests, we've used ngrok tool to map localhost environments to https ports (https://ngrok.com/ )
-const private_key = "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDSI72TdCLuZmve\n6b3ZJgCXkE+2qwxMFvF4oWlVZg138l6od+dCHLMbB53vkHuAnqYhaREcPiXY7ngf\n8HChkcCskyB9EDWa7DTz22Ogpts/b8t2o4nw8iF9j+ODKfMr3R3cLIZYbYItJoWx\nlpn6OhLJN9B7l3ePA7GdmfqKpxBql5z6nD7ZAkly6fm3rZF1Apx9Crz2f4pHcVZ9\nTghitcoDolNn8UmsJE5W1nkluD0vS+4nqoGRN8qEniGdj2H/gf1KPl6zrO2rRKRA\npWEDJ1tMVH/qHRlODcuSE+DT0O/2TJnhgKBSJGw9ff1sLtfLzzksKJykghBFBbfz\nCGNUJuvDAgMBAAECggEAAo0eiG4Y3SNvMdX3+8KYr+kM9AnK7MLmjEa2vFZbLtae\nzEAlwElllJwYuxzaSFXPbIkVr8MYEInXTtlLdMVhPSHNe4Hj32KjbfEpmidhyA5i\naP6pS7yU0tfEClv1sNWkFCqSOFFJYE+fFeiJ1rONINZFo1/TusUaYJsgTeijVrfv\nimGVf4nkrfAGy+u6izBxSXemFATGFlKyz3oPA3KoHVB3URW0hOdek9gzR8vfWSvp\nrOQOCzAq2LWGnvyOKLd2+9cXbQyk/r/Jb1YoXwdP83v7+3xFizFwP36p4s26D8lf\nbiCgPDBDuZOoMK9TJXef28R+JdqXU+ttDxgiv8uIiQKBgQDrUr225mX2LH1dl/Rc\nFi504DnDC0Jl80XSjvAq/yF20HJETLaVg68uGmIGAJ6zNDviJ1ASziJUXakMe973\nnWbTSPzNtsVxgPckt47TwNDCTa8Y4TwzoDXZ+xTDZfE5oNv0e3v0CF7wJ/2pEDmO\nj822lkvoxir0XjklDT0DB3/3/QKBgQDkmofOeickCIedUhFuWGX3KmdgVxH+i+aD\nH74fZdSZkE5r6ayDfHfd42dTSx+bBNhvRMG7sAh5MeJQtCHxpGYeid2GpZT/T0Qb\nwWq6WbZ7yBPujT9feFUsmPSW5ctFc4tH7qI11tsRvtRhHnJkHPpTswcXtjTWq3aR\ncXm0MHZevwKBgQDETZtwzbXUq7xQrQftIZvTZ5EHwYa8ITnnsdFrLLUvtib8Drpo\n8xbZcKzAsReyCirCN2U2qro8gn0YquSOzsEOE96/hG4khx6jhHQi9L+wtrkQGiPs\nNQN3OVpSveGC30tdIP1/ztPTpqiVtbEt2YwTekEMhvMiMs+ctvRkaIc5yQKBgBXJ\nfIP7NFvEzFf8CFlB54Xk7rFJ2xctciyxC8emRtrT3AWA4cYuSKZHFAPmNv7pOU9x\neB1RK52RWYZjhJCpIGpsrUY15btnbJBQoMFd53xoly23HIEW0NdNRJJVGEhoOLAE\nWEVVUs+gJlGTO0e7U0hC2bwyy1piQQyfif/YVo+1AoGAW0vJ37yx4cKLdI9z+cd7\nHg8bzk9eUGJemyXX1AMlkD6WfDyNk/DP4CMM7Py980gTUIbC94rpPs4avCxmPvao\nKVjJF1+DbP9SGH+6Xmdkkg42Y1c1QVylNkOqGZ1wKeYjrfnfMF0E1LVvwTAIegYO\nykNgFZC6YafGVDLofYOtSiE=\n-----END PRIVATE KEY-----\n";
-const client_email = "dialogflow-hdiejl@restaurantbot-tutorial-lndcel.iam.gserviceaccount.com";
+const private_key = "-----BEGIN PRIVATE KEY-----\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQC2tb3UwC5y21UR\nuYIy5dv1sChVDbjzBMQbjMrkV/XxwZ1UV9mCZ6rXropHR82lYy+5On95lTBGaja4\nn85E8t0pL5i2qxOs6vhiPEz2V9Hu/zUGECnSPxPurQkbxCA6T5SE24qybWdvNup+\np7B6AWGKB5l69/zBMHr2VWwoZIYj6dunIqvilR3wzRyJD4UUwQRVZG3M8YmKkEsQ\nz7IKvchRwb+rKeOKuA5DvGtbNfEkzFiss1XgpNrYCLVqelMxG/ieqA39EaAw794+\nbtMQGnhOSUCkAtaGYMh5TNpCMjvVwjSoB8TWs86qWP46gjnNhhoQ2n1ZZKAyTI1b\n8/NnPA5XAgMBAAECggEAK7Sr1UGnmsgGwHeswnojtNDPxRDERjXEp4Z1XkwARDV5\nahydpkkgH/nbkBOICOECIH/y0GW0p5NuxZlMoUerSdfd4wxnZ3zJr84W5vK5AD/C\nMlIZfvah0P1JaX/v6aLxtxpBQk9TZ9IuI9//IiBEcd1BhJ3fs2LidxyWA8+QGvTF\nae1qmopEXwIseW7SlBhr9R4jVwGErrbx477W0T2ciiKJrYQAFevrVScURK3Z8peM\nnPF/oidjihiGC+fBgdWvNH7XgLetQnb4VsjwVkucFHgfDnO7RCycxavWv/dpvDLU\nV6BC1tgq5EzR0dapJcFYj6P/QzKfm3NgBtohQYtvGQKBgQDm9LfY03ma6IEhS3K2\nCBsyOJbLhlV7VBe0lDZZro3q4tNSYZaAQopo6dbVOBfuv+tWelJ41VSgWSvUtRiT\nXHGxh3uI1ALun/RRAHTtjOhRKlIwHgFLJV1YyZR11/1jFapKaBM5NinrLxgERlBE\nQ58t2J0KpHCLargBgRt0sDoXowKBgQDKhbnNZLF8HtbTF6yEid0QKAlYDiCsedpx\nDEFiavmB0/6MHe6L5SOMzneuV3fYSfnTiPCnKXlRpKHcLZ7Ml0M0SsqK0VCyzhnM\nJd56H/YiodjcyCDWL8gQAZ6ut81jCUYR9MN/90xH923hh8ImdJ3PSKRoezaxaZZJ\nKS0txiqpvQKBgQDktgsqCaIvKXhXBGRAp55nCWsreYhFbW1cQjngbd/Ub3Nd7Y4g\nzcRLSOaal8X7hMsFBHWPe5Mmh6fEKOKBa9abO9O2GF4e+P/1B0LDy/p0BjkFtXEK\nfaIHPvhqCs6+xMGylYYT7fNtF2HtOcRbFawYtp4t39Ij/jbiJnyN/cZJiQKBgQC5\nHLgzTAmKuSmE80umLdlZDi9URD2LSSnoUNpm2f7Ls3kkm6tSRZRT/NiaC6sokJ2A\nw9esA5W3kXK9LRnMSaqM3pv5fM91UDt2RVrwZ8xz5VmynF6fSDdmogRoEOrzziM1\nAHO9wM4BreDK12sX+VnRgMV+FrlsOmW6458/CrYuRQKBgQDZnRLW12Iu9KdWP+e6\nhg4uXEx8r/0/ZlMiC8XvFwfoN6l9J+539vTzHNOzikSdMWsvmpIEDNk7NAwnYxnB\nNemYyS+sYRrtOqL3d6/3qrBhHPOb9l2ATqcFYQedbMnfdfAm8ssVPMZHWexbW8Xq\nlN+2p+V8IATDBvA+ILOoKUAuQQ==\n-----END PRIVATE KEY-----\n";
+const client_email = "food-delivery-adcjmq@appspot.gserviceaccount.com";
 
-const project_id = "restaurantbot-tutorial-lndcel";
-const sessionId = "23";
+
+
 
 sonicx.configuration = {
     disableFormdata: false, // if want to use third party form data parser default is true.
@@ -23,23 +23,21 @@ sonicx.configuration = {
     }, // can use to configure cors or other header settings.
 };
 
-const config= {
+const config = {
     "private_key": private_key,
     "client_email": client_email,
-  
+
 }
 
 const getToken = async () => {
     return new Promise((resolve) => {
-        console.log('test')
         googleAuth.authenticate(
             {
-            email: client_email,
-            key: private_key, 
-            scopes: ['https://www.googleapis.com/auth/cloud-platform', 'https://www.googleapis.com/auth/dialogflow'],
-            }, 
+                email: client_email,
+                key: private_key,
+                scopes: ['https://www.googleapis.com/auth/cloud-platform', 'https://www.googleapis.com/auth/dialogflow'],
+            },
             (err, token) => {
-                console.log('token from error '+ err)
                 resolve(token);
             },
         );
@@ -47,23 +45,21 @@ const getToken = async () => {
 }
 
 route('/token', [
-{
-    configuration: {
-        responseHeaders: {
-            "Access-Control-Expose-Headers": "*",
-            "Access-Control-Allow-Origin": "*",
-        }, 
+    {
+        configuration: {
+            responseHeaders: {
+                "Access-Control-Expose-Headers": "*",
+                "Access-Control-Allow-Origin": "*",
+            },
 
-    }, 
+        },
 
-    controller: async (req, res) => {
-        console.log('testing token')
-        let token = await getToken();
-        console.log('token is' + token)
-        res.send({ token });
-    }
+        controller: async (req, res) => {
+            let token = await getToken();
+            res.send({ token });
+        }
     },
-    
+
 ]);
 
 
